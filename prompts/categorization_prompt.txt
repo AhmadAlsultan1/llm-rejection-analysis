@@ -5,6 +5,7 @@ Your task:
 2. Each category should have a short English name.
 3. Include the original Arabic reasons under each category.
 4. Count how many reasons are in each category.
-5. Write a short final summary in English.
+5. Calculate the percentage for each category out of the total number of reasons.
+6. Write a short final summary in English.
 
 Return structured JSON only.
