@@ -1,4 +1,4 @@
-# 🚀 LLM Rejection Analysis
+#  LLM Rejection Analysis
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![LangChain](https://img.shields.io/badge/LangChain-Framework-green)
@@ -13,7 +13,7 @@ The system groups similar Arabic rejection reasons into meaningful categories, c
 
 ---
 
-# 📖 Table of Contents
+#  Table of Contents
 
 - [Overview](#-overview)
 - [Problem Statement](#-problem-statement)
@@ -33,7 +33,7 @@ The system groups similar Arabic rejection reasons into meaningful categories, c
 
 ---
 
-# 📌 Overview
+#  Overview
 
 This project demonstrates how Large Language Models (LLMs) can automate the analysis of reviewer rejection reasons.
 
@@ -49,7 +49,7 @@ The project simulates an AI component that can later be integrated into larger r
 
 ---
 
-# ❓ Problem Statement
+#  Problem Statement
 
 Organizations often collect free-text rejection reasons from reviewers.
 
@@ -71,7 +71,7 @@ Managers need answers such as:
 
 ---
 
-# 💡 Solution
+#  Solution
 
 The project uses an LLM to transform raw rejection reasons into structured business insights.
 
@@ -103,7 +103,7 @@ Business Insights
 
 ---
 
-# ✨ Features
+#  Features
 
 - Analyze Arabic rejection reasons
 - Automatic semantic categorization
@@ -116,7 +116,7 @@ Business Insights
 
 ---
 
-# 🏗 System Architecture
+#  System Architecture
 
 ```
                     Reviewer
@@ -145,7 +145,7 @@ Business Insights
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```
 llm-rejection-analysis/
@@ -178,7 +178,7 @@ llm-rejection-analysis/
 
 ---
 
-# 📁 Folder Responsibilities
+#  Folder Responsibilities
 
 | Folder | Responsibility |
 |---------|---------------|
@@ -193,7 +193,7 @@ llm-rejection-analysis/
 
 ---
 
-# 📥 Example Input
+#  Example Input
 
 ```json
 [
@@ -206,7 +206,7 @@ llm-rejection-analysis/
 
 ---
 
-# 📤 Example Output
+#  Example Output
 
 ```json
 {
@@ -235,7 +235,7 @@ llm-rejection-analysis/
 
 ---
 
-# ⚙ Installation
+#  Installation
 
 Clone the repository
 
@@ -271,7 +271,7 @@ pip install -r requirements.txt
 
 ---
 
-# 🔑 Environment Variables
+#  Environment Variables
 
 Create a `.env` file
 
@@ -281,7 +281,7 @@ GOOGLE_API_KEY=your_google_api_key
 
 ---
 
-# ▶ Running the Project
+#  Running the Project
 
 Generate the dataset
 
@@ -303,7 +303,7 @@ output/analysis.json
 
 ---
 
-# 🛠 Tech Stack
+#  Tech Stack
 
 - Python
 - LangChain
@@ -316,9 +316,9 @@ output/analysis.json
 
 ---
 
-# 🛣 Roadmap
+#  Roadmap
 
-## ✅ Completed
+##  Completed
 
 - Dataset generation
 - Arabic rejection reason analysis
@@ -331,7 +331,7 @@ output/analysis.json
 
 ---
 
-## 🚧 In Progress
+##  In Progress
 
 - Full reviewer workflow simulation
 - Application-level data model
@@ -339,7 +339,7 @@ output/analysis.json
 
 ---
 
-## 🔮 Planned
+##  Planned
 
 - Dashboard
 - FastAPI
@@ -355,7 +355,7 @@ output/analysis.json
 
 ---
 
-# 🌍 Future Vision
+#  Future Vision
 
 The long-term goal is to evolve this prototype into an enterprise-ready AI component capable of integrating into real review systems.
 
@@ -371,7 +371,7 @@ Future versions will support:
 
 ---
 
-# 👨‍💻 Author
+#  Author
 
 **Ahmad Al Sultan**
 
