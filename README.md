@@ -1,57 +1,161 @@
-# LLM Rejection Analysis
+# 🚀 LLM Rejection Analysis
 
-An AI-powered prototype that analyzes reviewer rejection reasons using LangChain and Google's Gemini model.
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![LangChain](https://img.shields.io/badge/LangChain-Framework-green)
+![Gemini](https://img.shields.io/badge/Google-Gemini-orange)
+![Pydantic](https://img.shields.io/badge/Pydantic-Structured_Output-purple)
+![Status](https://img.shields.io/badge/Status-In_Development-yellow)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-The system groups similar Arabic rejection reasons into meaningful categories, counts how many reasons belong to each category, calculates percentages, and generates a structured summary.
+An AI-powered prototype that automatically analyzes reviewer rejection reasons using **LangChain** and **Google Gemini**.
+
+The system groups similar Arabic rejection reasons into meaningful categories, calculates statistics, and produces structured business insights that can later be visualized in dashboards or integrated into enterprise systems.
 
 ---
 
-## Features
+# 📖 Table of Contents
+
+- [Overview](#-overview)
+- [Problem Statement](#-problem-statement)
+- [Solution](#-solution)
+- [Features](#-features)
+- [System Architecture](#-system-architecture)
+- [Project Structure](#-project-structure)
+- [Folder Responsibilities](#-folder-responsibilities)
+- [Example Input](#-example-input)
+- [Example Output](#-example-output)
+- [Installation](#-installation)
+- [Running the Project](#-running-the-project)
+- [Tech Stack](#-tech-stack)
+- [Roadmap](#-roadmap)
+- [Future Vision](#-future-vision)
+- [Author](#-author)
+
+---
+
+# 📌 Overview
+
+This project demonstrates how Large Language Models (LLMs) can automate the analysis of reviewer rejection reasons.
+
+Instead of manually reading hundreds of rejection comments, the system automatically:
+
+- Groups similar rejection reasons
+- Creates meaningful categories
+- Calculates category percentages
+- Generates concise summaries
+- Produces structured JSON output
+
+The project simulates an AI component that can later be integrated into larger review systems.
+
+---
+
+# ❓ Problem Statement
+
+Organizations often collect free-text rejection reasons from reviewers.
+
+Example:
+
+- الصورة غير واضحة
+- الهوية غير مقروءة
+- المستند منتهي الصلاحية
+- المرفقات ناقصة
+
+Reading hundreds or thousands of these comments manually is slow and inefficient.
+
+Managers need answers such as:
+
+- What are the most common rejection reasons?
+- Which problems occur most frequently?
+- What trends appeared this month?
+- Which rejection category should be improved first?
+
+---
+
+# 💡 Solution
+
+The project uses an LLM to transform raw rejection reasons into structured business insights.
+
+Input:
+
+```
+Arabic rejection reasons
+```
+
+↓
+
+Prompt Engineering
+
+↓
+
+LangChain
+
+↓
+
+Google Gemini
+
+↓
+
+Structured JSON
+
+↓
+
+Business Insights
+
+---
+
+# ✨ Features
 
 - Analyze Arabic rejection reasons
-- Automatically group similar reasons into categories
-- Generate category counts and percentages
-- Produce a concise summary
-- Return structured JSON output
-- Built with a modular project architecture
+- Automatic semantic categorization
+- Structured JSON output
+- Category percentages
+- Summary generation
+- Modular architecture
+- Easily replaceable LLM provider
+- Prompt separation from code
 
 ---
 
-## Architecture
+# 🏗 System Architecture
 
-```text
-Reviewer Rejection Reasons
-          |
-          v
-JSON Dataset
-          |
-          v
-Prompt Template
-          |
-          v
-LangChain
-          |
-          v
-Gemini LLM
-          |
-          v
-Structured Output
-          |
-          v
-analysis.json
+```
+                    Reviewer
+                        │
+                        ▼
+            Rejection Reasons (Arabic)
+                        │
+                        ▼
+                 JSON Dataset
+                        │
+                        ▼
+               Prompt Template
+                        │
+                        ▼
+                 LangChain
+                        │
+                        ▼
+                 Gemini LLM
+                        │
+                        ▼
+            Structured JSON Output
+                        │
+                        ▼
+             Dashboard / Analytics
 ```
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
-```text
+```
 llm-rejection-analysis/
+
 │
 ├── app.py
 ├── generate_dataset.py
 ├── requirements.txt
 ├── README.md
+├── .env.example
 │
 ├── data/
 │   └── rejection_reasons.json
@@ -66,89 +170,100 @@ llm-rejection-analysis/
 │   ├── llm.py
 │   └── analyzer.py
 │
-└── output/
-    └── analysis.json
+├── output/
+│   └── analysis.json
+│
+└── docs/
 ```
 
 ---
 
-## Folder Responsibilities
+# 📁 Folder Responsibilities
 
-| Path | Responsibility |
-|---|---|
-| `app.py` | Main entry point for running the analysis |
-| `generate_dataset.py` | Generates sample Arabic rejection reasons |
-| `data/` | Stores input datasets |
-| `prompts/` | Stores LLM prompt templates |
-| `models/` | Contains Pydantic schemas for structured output |
-| `services/` | Contains LLM setup and analysis logic |
-| `output/` | Stores generated analysis results |
+| Folder | Responsibility |
+|---------|---------------|
+| app.py | Project entry point |
+| generate_dataset.py | Generates sample Arabic rejection reasons |
+| data | Input datasets |
+| prompts | Prompt templates |
+| models | Pydantic schemas |
+| services | Business logic and LLM interaction |
+| output | Generated AI analysis |
+| docs | Project documentation |
 
 ---
 
-## Example Input
+# 📥 Example Input
 
 ```json
 [
-  "الصورة غير واضحة.",
-  "المرفقات ناقصة.",
-  "رقم الهوية لا يطابق البيانات المدخلة.",
-  "المستند منتهي الصلاحية."
+  "الصورة غير واضحة",
+  "المرفقات ناقصة",
+  "رقم الهوية لا يطابق البيانات",
+  "المستند منتهي الصلاحية"
 ]
 ```
 
 ---
 
-## Example Output
+# 📤 Example Output
 
 ```json
 {
   "categories": [
     {
-      "name": "Poor Document Quality",
-      "count": 1,
-      "percentage": 25.0,
+      "name": "Document Quality",
+      "count": 24,
+      "percentage": 32.0,
       "reasons": [
-        "الصورة غير واضحة."
+        "الصورة غير واضحة",
+        "الهوية غير مقروءة"
       ]
     },
     {
       "name": "Missing Documents",
-      "count": 1,
-      "percentage": 25.0,
+      "count": 18,
+      "percentage": 24.0,
       "reasons": [
-        "المرفقات ناقصة."
+        "المرفقات ناقصة"
       ]
     }
   ],
-  "summary": "The rejection reasons mainly relate to document quality, missing attachments, data mismatch, and expired documents."
+  "summary": "Most rejection reasons are related to document quality and missing required documents."
 }
 ```
 
 ---
 
-## Installation
+# ⚙ Installation
 
-Clone the repository:
+Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/YOUR_USERNAME/llm-rejection-analysis.git
+```
+
+Move into the project
+
+```bash
 cd llm-rejection-analysis
 ```
 
-Create a virtual environment:
+Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate it on Windows:
+Activate it
+
+Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Install dependencies:
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -156,41 +271,39 @@ pip install -r requirements.txt
 
 ---
 
-## Environment Variables
+# 🔑 Environment Variables
 
-Create a `.env` file in the project root:
+Create a `.env` file
 
 ```env
-GOOGLE_API_KEY=your_google_gemini_api_key_here
+GOOGLE_API_KEY=your_google_api_key
 ```
-
-> Do not commit your `.env` file.
 
 ---
 
-## Run the Project
+# ▶ Running the Project
 
-Generate sample data:
+Generate the dataset
 
 ```bash
 python generate_dataset.py
 ```
 
-Run the analysis:
+Run the application
 
 ```bash
 python app.py
 ```
 
-The result will be saved to:
+The generated analysis will be stored inside
 
-```text
+```
 output/analysis.json
 ```
 
 ---
 
-## Tech Stack
+# 🛠 Tech Stack
 
 - Python
 - LangChain
@@ -203,30 +316,67 @@ output/analysis.json
 
 ---
 
-## Roadmap
+# 🛣 Roadmap
 
-### Completed
+## ✅ Completed
 
-- [x] Generate Arabic rejection reason dataset
-- [x] Analyze reasons using Gemini
-- [x] Categorize similar rejection reasons
-- [x] Generate structured JSON output
-- [x] Refactor project into modular architecture
-
-### Next Improvements
-
-- [ ] Simulate full reviewer decision workflow
-- [ ] Support application-level JSON data
-- [ ] Add dashboard visualizations
-- [ ] Add FastAPI endpoint
-- [ ] Add Dataiku integration
-- [ ] Add unit tests
-- [ ] Add logging
-- [ ] Add Docker support
-- [ ] Add CI/CD pipeline
+- Dataset generation
+- Arabic rejection reason analysis
+- LangChain integration
+- Gemini integration
+- Structured JSON output
+- Modular architecture
+- Prompt separation
+- Category percentages
 
 ---
 
-## Project Goal
+## 🚧 In Progress
 
-This project is a learning prototype designed to simulate how AI can help summarize and categorize reviewer rejection reasons in a real review system.
+- Full reviewer workflow simulation
+- Application-level data model
+- Better prompt engineering
+
+---
+
+## 🔮 Planned
+
+- Dashboard
+- FastAPI
+- Dataiku integration
+- Docker
+- Unit tests
+- Logging
+- CI/CD
+- Database integration
+- Batch processing
+- REST API
+- Authentication
+
+---
+
+# 🌍 Future Vision
+
+The long-term goal is to evolve this prototype into an enterprise-ready AI component capable of integrating into real review systems.
+
+Future versions will support:
+
+- Reviewer workflows
+- Batch analysis
+- Interactive dashboards
+- Database integration
+- API endpoints
+- Dataiku pipelines
+- Cloud deployment
+
+---
+
+# 👨‍💻 Author
+
+**Ahmad Al Sultan**
+
+AI & Data Science Enthusiast
+
+Built as part of my AI Engineering learning journey and internship preparation.
+
+
