@@ -1,45 +1,232 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# LLM Rejection Analysis
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+An AI-powered prototype that analyzes reviewer rejection reasons using LangChain and Google's Gemini model.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
-
----
-
-## Edit a file
-
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+The system groups similar Arabic rejection reasons into meaningful categories, counts how many reasons belong to each category, calculates percentages, and generates a structured summary.
 
 ---
 
-## Create a file
+## Features
 
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+- Analyze Arabic rejection reasons
+- Automatically group similar reasons into categories
+- Generate category counts and percentages
+- Produce a concise summary
+- Return structured JSON output
+- Built with a modular project architecture
 
 ---
 
-## Clone a repository
+## Architecture
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+```text
+Reviewer Rejection Reasons
+          |
+          v
+JSON Dataset
+          |
+          v
+Prompt Template
+          |
+          v
+LangChain
+          |
+          v
+Gemini LLM
+          |
+          v
+Structured Output
+          |
+          v
+analysis.json
+```
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+---
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+## Project Structure
+
+```text
+llm-rejection-analysis/
+│
+├── app.py
+├── generate_dataset.py
+├── requirements.txt
+├── README.md
+│
+├── data/
+│   └── rejection_reasons.json
+│
+├── prompts/
+│   └── categorization_prompt.txt
+│
+├── models/
+│   └── schema.py
+│
+├── services/
+│   ├── llm.py
+│   └── analyzer.py
+│
+└── output/
+    └── analysis.json
+```
+
+---
+
+## Folder Responsibilities
+
+| Path | Responsibility |
+|---|---|
+| `app.py` | Main entry point for running the analysis |
+| `generate_dataset.py` | Generates sample Arabic rejection reasons |
+| `data/` | Stores input datasets |
+| `prompts/` | Stores LLM prompt templates |
+| `models/` | Contains Pydantic schemas for structured output |
+| `services/` | Contains LLM setup and analysis logic |
+| `output/` | Stores generated analysis results |
+
+---
+
+## Example Input
+
+```json
+[
+  "الصورة غير واضحة.",
+  "المرفقات ناقصة.",
+  "رقم الهوية لا يطابق البيانات المدخلة.",
+  "المستند منتهي الصلاحية."
+]
+```
+
+---
+
+## Example Output
+
+```json
+{
+  "categories": [
+    {
+      "name": "Poor Document Quality",
+      "count": 1,
+      "percentage": 25.0,
+      "reasons": [
+        "الصورة غير واضحة."
+      ]
+    },
+    {
+      "name": "Missing Documents",
+      "count": 1,
+      "percentage": 25.0,
+      "reasons": [
+        "المرفقات ناقصة."
+      ]
+    }
+  ],
+  "summary": "The rejection reasons mainly relate to document quality, missing attachments, data mismatch, and expired documents."
+}
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+cd llm-rejection-analysis
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+Activate it on Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+GOOGLE_API_KEY=your_google_gemini_api_key_here
+```
+
+> Do not commit your `.env` file.
+
+---
+
+## Run the Project
+
+Generate sample data:
+
+```bash
+python generate_dataset.py
+```
+
+Run the analysis:
+
+```bash
+python app.py
+```
+
+The result will be saved to:
+
+```text
+output/analysis.json
+```
+
+---
+
+## Tech Stack
+
+- Python
+- LangChain
+- Google Gemini
+- Pydantic
+- JSON
+- Git
+- Bitbucket
+- GitHub
+
+---
+
+## Roadmap
+
+### Completed
+
+- [x] Generate Arabic rejection reason dataset
+- [x] Analyze reasons using Gemini
+- [x] Categorize similar rejection reasons
+- [x] Generate structured JSON output
+- [x] Refactor project into modular architecture
+
+### Next Improvements
+
+- [ ] Simulate full reviewer decision workflow
+- [ ] Support application-level JSON data
+- [ ] Add dashboard visualizations
+- [ ] Add FastAPI endpoint
+- [ ] Add Dataiku integration
+- [ ] Add unit tests
+- [ ] Add logging
+- [ ] Add Docker support
+- [ ] Add CI/CD pipeline
+
+---
+
+## Project Goal
+
+This project is a learning prototype designed to simulate how AI can help summarize and categorize reviewer rejection reasons in a real review system.
