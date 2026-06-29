@@ -11,6 +11,7 @@ def main():
     output_path = Path("output/analysis.json")
 
     reasons = json.loads(reasons_path.read_text(encoding="utf-8"))
+    reasons = reasons[:30]
     prompt_template = prompt_path.read_text(encoding="utf-8")
 
     llm = get_llm()

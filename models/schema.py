@@ -6,7 +6,7 @@ class Category(BaseModel):
     name: str = Field(description="Short English category name")
     count: int = Field(description="Number of reasons in this category")
     percentage: float = Field(description="Percentage of total reasons")
-    reasons: List[str] = Field(description="Original Arabic rejection reasons")
+    examples: List[str] = Field(description="A few example Arabic reasons for this category")
 
 
 class RejectionAnalysis(BaseModel):

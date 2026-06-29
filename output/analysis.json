@@ -1,0 +1,65 @@
+{
+  "categories": [
+    {
+      "name": "Expired or Invalid Documents",
+      "count": 9,
+      "percentage": 30.0,
+      "examples": [
+        "الهوية منتهية.",
+        "المستند منتهي الصلاحية.",
+        "الوثيقة غير سارية."
+      ]
+    },
+    {
+      "name": "Missing or Insufficient Supporting Documents",
+      "count": 6,
+      "percentage": 20.0,
+      "examples": [
+        "يلزم إرفاق مستند داعم.",
+        "المستند المطلوب غير موجود.",
+        "لم يتم إرفاق الهوية الوطنية."
+      ]
+    },
+    {
+      "name": "Poor Image Quality",
+      "count": 5,
+      "percentage": 16.7,
+      "examples": [
+        "المستند مصور بجودة منخفضة.",
+        "جودة الصورة ضعيفة.",
+        "الصورة مقصوصة ولا تظهر كامل المستند."
+      ]
+    },
+    {
+      "name": "Mismatched Information",
+      "count": 3,
+      "percentage": 10.0,
+      "examples": [
+        "رقم الجوال لا يطابق الطلب.",
+        "الاسم لا يطابق الهوية.",
+        "يوجد اختلاف في بيانات العميل."
+      ]
+    },
+    {
+      "name": "Incomplete Request Information",
+      "count": 3,
+      "percentage": 10.0,
+      "examples": [
+        "الطلب يحتوي على معلومات ناقصة.",
+        "الطلب يحتوي على معلومات ناقصة.",
+        "الطلب يحتوي على معلومات ناقصة."
+      ]
+    },
+    {
+      "name": "Insufficient Proof",
+      "count": 4,
+      "percentage": 13.3,
+      "examples": [
+        "الإثبات المرفق غير كافٍ.",
+        "الإثبات المرفق غير كافٍ.",
+        "الإثبات المرفق غير كافٍ."
+      ]
+    }
+  ],
+  "summary": "The majority of rejections (30%) are due to expired or invalid documents, followed by missing or insufficient supporting documents (20%). Image quality problems account for 16.7%, while mismatched information and incomplete request details each represent 10%. Insufficient proof makes up the remaining 13.3%."
+}
